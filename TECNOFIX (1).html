@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECNOFIX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+
+nav ul li a {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #00ffff;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  filter: blur(6px);
+  transition: all 0.8s ease;
+  will-change: transform, opacity, filter;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0f0f0f;
+      color: #e0e0e0;
+      background-image: url('https://i.ibb.co/fdQLBXr3/fondo.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0a0a0a, #1f1f1f);
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #00ffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 50px;
+      width: auto;
+      margin-right: 20px;
+    }
+
+    header h1 {
+      font-size: 2em;
+      color: #00ffff;
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #00ffff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ffffff;
+    }
+
+    .hero {
+      background-image: url('https://i.ibb.co/fdQLBXr3/fondo.png');
+      background-size: cover;
+      background-position: center;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h2 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: #00ffff;
+    }
+
+    .hero-content p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+      background-color: rgba(15, 15, 15, 0.85);
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    h3 {
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    .titulo-linea {
+      border-top: 2px dashed #00ffff;
+      border-bottom: 2px dashed #00ffff;
+      padding: 10px;
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .imagen-contenedor {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .boton {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ffff;
+      color: #0f0f0f;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+      margin: 5px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .boton:hover {
+      background-color: #ffffff;
+      color: #0f0f0f;
+      transform: scale(1.05);
+    }
+
+    /* 🔹 Estilo específico para el botón Atrás */
+    .boton-atras::before {
+      content: "⟵ "; /* flecha hacia la izquierda */
+      font-size: 1.2em;
+    }
+
+    /* 🔹 Imagen de servicios más grande y movida 2cm a la izquierda */
+    .img-servicios {
+      display: block;
+      margin: 0 auto;
+      width: 12cm;
+      height: auto;
+      position: relative;
+      left: -2cm;
+    }
+
+    /* 🔹 Contacto dinámico */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .contact-card {
+      background-color: rgba(255,255,255,0.05);
+      border: 2px solid #00ffff;
+      border-radius: 10px;
+      padding: 20px;
+      width: 280px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,255,255,0.4);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      filter: grayscale(100%); /* Blanco y negro */
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #1f1f1f;
+      text-align: center;
+      padding: 20px;
+      color: #888;
+      border-top: 2px solid #00ffff;
+    }
+/* --- Estilos para la nueva interfaz de detalle de impresoras --- */
+  .detalle-fila {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .detalle-recuadro-imagen {
+    border: 2px dashed #00ffff !important;
+    padding: 20px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    
+    /* ESTO ES LO QUE ALINEARÁ TODO */
+    width: 280px !important;  
+    flex-shrink: 0 !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+  .detalle-recuadro-imagen img {
+    max-width: 90%;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+
+  .detalle-recuadro-imagen p {
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0;
+    font-size: 0.9em;
+  }
+
+  .detalle-texto-especificaciones {
+    color: #e0e0e0;
+    font-size: 0.95em;
+    line-height: 1.6;
+    max-width: 500px;
+  }
+
+  .detalle-texto-especificaciones strong {
+    color: #00ffff;
+    font-weight: normal;
+  }
+/* =========================
+   MEJORA GENERAL TECNOFIX
+   ========================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  background-attachment: fixed;
+}
+
+/* Animación suave global */
+* {
+  transition: all 0.25s ease-in-out;
+}
+
+/* =========================
+   EFECTO GLASS (SECCIONES)
+   ========================= */
+
+section {
+  backdrop-filter: blur(10px);
+  background: rgba(15, 15, 15, 0.75) !important;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  box-shadow: 0 0 25px rgba(0,255,255,0.05);
+  transform: translateY(0);
+}
+
+section:hover {
+  box-shadow: 0 0 35px rgba(0,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+/* =========================
+   HEADER MÁS MODERNO
+   ========================= */
+
+header {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* =========================
+   HERO MÁS DINÁMICO
+   ========================= */
+
+.hero-content h2 {
+  text-shadow: 0 0 20px rgba(0,255,255,0.4);
+  animation: glowText 3s infinite alternate;
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 10px #00ffff; }
+  to { text-shadow: 0 0 25px #00ffff; }
+}
+
+/* =========================
+   BOTONES MÁS MODERNOS
+   ========================= */
+
+.boton {
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 1px;
+}
+
+.boton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-20deg);
+}
+
+.boton:hover::after {
+  left: 120%;
+  transition: 0.5s;
+}
+
+/* =========================
+   TARJETAS PRODUCTOS
+   ========================= */
+
+.producto-card {
+  border-radius: 12px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 15px rgba(0,255,255,0.08);
+  cursor: pointer;
+}
+
+.producto-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0,255,255,0.25);
+}
+
+/* =========================
+   IMÁGENES MÁS SUAVES
+   ========================= */
+
+img {
+  border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* =========================
+   GALERÍAS (SCROLL MÁS LIMPIO)
+   ========================= */
+
+#interfaz-galeria,
+#interfaz-servicios {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* =========================
+   DETALLES (PANELES)
+   ========================= */
+
+[id^="detalle-"] {
+  animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   SCROLL BAR MODERNO
+   ========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ffff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}  
+</style>
+</head>
+<style>
+
+nav ul li a {
+  position: relative;
+  padding-bottom: 5px;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #00ffff;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px #00ffff;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+  /* Animación tecnológica en el inicio */
+  .hero {
+    background-image: url('https://i.ibb.co/fdQLBXr3/fondo.png');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Líneas animadas estilo circuito */
+  .hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      90deg,
+      rgba(0, 255, 255, 0.2) 0px,
+      rgba(0, 255, 255, 0.2) 2px,
+      transparent 2px,
+      transparent 40px
+    );
+    animation: moveCircuit 10s linear infinite;
+    z-index: 0;
+  }
+
+  .hero::after {
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 255, 0.15) 0px,
+      rgba(0, 255, 255, 0.15) 2px,
+      transparent 2px,
+      transparent 40px
+    );
+    animation: moveCircuitVertical 12s linear infinite;
+  }
+
+  @keyframes moveCircuit {
+    from { transform: translateX(0); }
+    to { transform: translateX(-40px); }
+  }
+
+  @keyframes moveCircuitVertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(-40px); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+/* Estilo para las tarjetas de la galería */
+  .producto-card {
+    border: 2px dashed #00ffff;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, background 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .producto-card:hover {
+    transform: scale(1.03);
+    background: rgba(0, 255, 255, 0.1);
+  }
+
+  .producto-card img {
+    max-width: 80%;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+
+  .producto-card p {
+    color: #ffffff;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+  }
+/* Estilos específicos para Promociones */
+  .promo-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
+    background: rgba(0, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .promo-fila::before {
+    content: '★';
+    position: absolute;
+    color: #00ffff;
+    font-size: 20px;
+    top: 10px; left: 10px;
+    text-shadow: 0 0 10px #00ffff;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+  }
+
+  .promo-imagen img {
+    max-width: 200px;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+  }
+
+  .promo-texto {
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .promo-texto h4 {
+    color: #ffffff;
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #00ffff;
+  }
+
+  .promo-texto p {
+    color: #00ffff;
+    font-style: italic;
+  }
+html {
+  scroll-behavior: smooth;
+}
+.detalle-fila {
+    display: flex;
+    align-items: flex-start; /* Alinea el texto a la parte superior de la imagen */
+    gap: 40px;               /* Distancia constante entre imagen y texto */
+    width: 100%;
+    max-width: 1000px;       /* Opcional: para que no se estire demasiado en pantallas grandes */
+    margin: 0 auto 50px auto; /* Centra la fila en la pantalla */
+}
+
+#loading-screen{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  flex-direction: column;
+  text-align: center;
+}
+
+.loader {
+  width:60px;
+  height:60px;
+  border:4px solid rgba(0,255,255,0.2);
+  border-top:4px solid #00ffff;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform:rotate(360deg); }
+}
+
+.loader-box h2{
+  margin-left: 0;
+  width: 100%;
+}
+
+.loader-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+</style>
+
+<body>
+
+<div id="loading-screen">
+  <div class="loader-box">
+    <div class="loader"></div>
+    <h2>TECNOFIX cargando...</h2>
+  </div>
+</div>
+
+<header style="display:flex; align-items:center; justify-content:space-between; padding:10px 40px; border-bottom:2px solid #00ffff; background:linear-gradient(90deg,#0a0a0a,#1f1f1f);">
+  
+  <!-- Logo alineado a la izquierda -->
+  <div style="flex:0;">
+    <img src="https://i.imgur.com/1Ip2pDV.png" alt="Logo TECNOFIX" 
+         style="height:3cm; width:auto;">
+  </div>
+
+  <!-- Título centrado -->
+  <div style="flex:1; text-align:center;">
+    <h1 style="font-size:2.2em; color:#00ffff; margin:0;">TECNOFIX</h1>
+  </div>
+
+  <!-- Navegación a la derecha -->
+<nav style="flex:0;">
+  <ul style="list-style:none; display:flex; gap:20px; margin:0; padding:0;">
+    <li><a href="#inicio" style="color:#00ffff; text-decoration:none; font-weight:bold;">Inicio</a></li>
+    <li><a href="#nosotros" style="color:#00ffff; text-decoration:none; font-weight:bold;">Nosotros</a></li>
+    <li><a href="#productos" style="color:#00ffff; text-decoration:none; font-weight:bold;">Productos</a></li>
+    <li><a href="#servicios" style="color:#00ffff; text-decoration:none; font-weight:bold;">Servicios</a></li>
+    <!-- 🔹 Nuevo apartado Promociones -->
+    <li><a href="#promociones" style="color:#00ffff; text-decoration:none; font-weight:bold;">Promociones</a></li>
+    <li><a href="#contacto" style="color:#00ffff; text-decoration:none; font-weight:bold;">Contacto</a></li>
+  </ul>
+</nav>
+
+  </nav>
+</header>
+
+
+
+  <div class="hero" id="inicio">
+    <div class="hero-content">
+      <h2>Tecnología que soluciona, confianza que perdura</h2>
+      <p>Especialistas en venta, reparación y mantenimiento de equipos de cómputo para hogares, estudiantes y empresas.</p>
+    </div>
+  </div>
+<!-- Sección Sobre Nosotros -->
+<section id="nosotros">
+  <h3 class="titulo-linea">SOBRE NOSOTROS</h3>
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:40px;">
+
+    <!-- Parte izquierda: texto -->
+    <div style="flex:1; min-width:300px; text-align:center; color:#e0e0e0;">
+      <h4 style="font-size:2.2em; color:#00ffff;">¿Quiénes somos?</h4>
+      <p style="font-size:1.4em; color:#ffffff;">
+        Somos <span style="color:#00ffff;">TECNOFIX</span>, nos especializamos en la venta, mantenimiento y reparaciones de equipos de cómputo,
+        ofreciendo soluciones tecnológicas y confiables para hogares, estudiantes y empresas.
+      </p>
+      <h4 style="font-size:2em; color:#00ffff;">Tenemos:</h4>
+      <ul style="list-style:none; padding:0; line-height:2; font-size:1.3em; color:#e0e0e0;">
+        <li>- Técnicos capacitados</li>
+        <li>- Atención personalizada</li>
+        <li>- Diagnósticos</li>
+        <li>- Productos de calidad</li>
+        <li>- Compromiso y responsabilidad</li>
+      </ul>
+    </div>
+
+<!-- Parte derecha: imágenes en columna -->
+<div style="flex:1; min-width:300px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:20px; margin-top:40px;">
+  <img src="https://i.ibb.co/0Vy4k16S/herramientas.png" alt="herramientas" style="width:5cm; margin-left:4cm;">
+  <img src="https://i.ibb.co/3mfMkWgK/pc.png" alt="pc" style="width:5cm; margin-left:-6cm;">
+  <img src="https://i.ibb.co/fYtKTNk7/tuerca.png" alt="tuerca" style="width:5cm; margin-left:4cm;">
+</div>
+
+
+  </div>
+</section>
+
+<section id="productos">
+  <h3 class="titulo-linea">PRODUCTOS</h3>
+  <div class="imagen-contenedor">
+    <img src="https://i.ibb.co/S7yDF0WP/collage-de-componentes-electr-nicos-hardware-para-equipos-pc-cpu-tarjeta-gr-ficos-microprocesador-fu.png" alt="Collage de hardware">
+  </div>
+  <div style="text-align:center;">
+    <button onclick="abrirProductos()" class="boton">Ver todos los productos</button>
+  </div>
+</section>
+
+<div id="interfaz-galeria" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2000; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff;">PRODUCTOS</h2>
+      <button onclick="cerrarGaleriaCompleta()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; padding-bottom: 100px;">
+      
+      <div class="producto-card" onclick="mostrarDetalleImpresoras()" style="cursor: pointer;">
+        <img src="https://i.ibb.co/Ngrxcpcz/impresoras-P.webp" alt="Impresoras">
+        <p>IMPRESORAS</p>
+      </div>
+
+      <div class="producto-card" onclick="mostrarDetalleTeclados()" style="cursor: pointer;">
+    <img src="https://i.ibb.co/zTr5c50f/teclado-P.png" alt="Teclados">
+    <p>TECLADOS</p>
+</div>
+      <div class="producto-card" onclick="mostrarDetalleCelulares()" style="cursor: pointer;">
+  <img src="https://i.ibb.co/S105GQf/celulares-P.webp" alt="Celulares">
+  <p>CELULARES</p>
+</div>	
+      <div class="producto-card" onclick="mostrarDetalleMonitores()" style="cursor: pointer;">
+  <img src="https://i.ibb.co/mVxSfnNX/monitor-P.png" alt="Monitores">
+  <p>MONITORES</p>
+</div>
+      <div class="producto-card" onclick="mostrarDetalleDiscos()" style="cursor: pointer;">
+  <img src="https://i.ibb.co/GQ4987G9/discosduros-P.webp" alt="Discos Duros">
+  <p>DISCOS DUROS</p>
+</div>
+      <div class="producto-card" onclick="mostrarDetalleCases()" style="cursor: pointer;">
+  <img src="https://i.ibb.co/4Rprj3sG/cases-P.webp" alt="Cases">
+  <p>CASES</p>
+</div>
+      <div class="producto-card" onclick="mostrarDetalleRAM()" style="cursor: pointer;">
+  <img src="https://i.ibb.co/nNHydt9H/memoriasram-P.webp" alt="Memorias RAM">
+  <p>MEMORIAS RAM</p>
+</div>
+
+     <div class="producto-card" onclick="mostrarDetalleFuentes()" style="cursor: pointer;">
+  <img src="https://i.ibb.co/v4Y5bTLM/fuentes-Poder-P.webp" alt="Fuentes de Poder">
+  <p>FUENTES DE PODER</p>
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="detalle-impresoras" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff;">IMPRESORAS</h2>
+      <button onclick="volverAGaleriaProductos()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila">
+        <div class="detalle-recuadro-imagen">
+          <img src="https://i.ibb.co/LhPqBjd4/impre-Eco1-png.png" alt="Epson EcoTank L3250">
+          <p>Epson EcoTank L3250</p>
+        </div>
+        <div class="detalle-texto-especificaciones">
+          <p><strong>Tipo:</strong> Multifuncional (imprime, copia, escanea)</p>
+          <p><strong>Tecnología:</strong> Tanque de tinta (EcoTank)</p>
+          <p><strong>Resolución:</strong> 5760 x 1440 dpi</p>
+          <p><strong>Velocidad:</strong> 10 ppm (normal)</p>
+          <p><strong>Capacidad:</strong> hasta 4500 negro / 7500 color</p>
+          <p><strong>Conectividad:</strong> USB, WiFi, WiFi Direct</p>
+          <p><strong>Uso:</strong> Hogar y oficina</p>
+        </div>
+      </div>
+
+      <div class="detalle-fila">
+        <div class="detalle-recuadro-imagen">
+          <img src="https://i.ibb.co/hRgJJv5c/impre-Canon2-png.png" alt="Canon PIXMA G3110">
+          <p>Canon PIXMA G3110</p>
+        </div>
+        <div class="detalle-texto-especificaciones">
+          <p><strong>Tipo:</strong> Multifuncional (imprime, copia, escanea)</p>
+          <p><strong>Tecnología:</strong> Tanque de tinta (MegaTank)</p>
+          <p><strong>Resolución:</strong> 4800 x 1200 dpi</p>
+          <p><strong>Velocidad:</strong> 8.8 ppm (negro)</p>
+          <p><strong>Capacidad:</strong> hasta 6000 negro / 7000 color</p>
+          <p><strong>Conectividad:</strong> USB, WiFi</p>
+          <p><strong>Uso:</strong> Hogar y oficina</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+  </div>
+<div id="detalle-teclados" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff;">TECLADOS</h2>
+      <button onclick="volverAGaleriaDesdeTeclados()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4);">
+          <img src="https://i.ibb.co/ccv89x0m/tecla1.png" alt="AULA F2088 RGB" style="max-width: 100%;">
+          <p style="color: white; margin-top: 10px;">AULA F2088 RGB</p>
+        </div>
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0;">
+          <p><p><strong>Full size (100%)</strong> → Con teclado numérico completo</p>
+          <p><p><strong>TKL (80%)</strong> → Sin teclado numérico</p>
+          <p> <p><strong>75% / 65% </strong>→ Más compacto</p>
+          <p> <p><strong>60% </strong>→ Ultra compacto (solo lo esencial)</p>
+          <p><strong>Mecánico</strong> → El mejor para gaming</p>
+          <p><strong>Membrana</strong> → Más barato y silencioso</p>
+        </div>
+      </div>
+
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4);">
+          <img src="https://i.ibb.co/Dcs78LH/teclado-Logi2-png.png" alt="Logitech K120" style="max-width: 100%;">
+          <p style="color: white; margin-top: 10px;">Logitech K120</p>
+        </div>
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0;">
+          <p><strong>Full size</strong> →(100%)</p>
+          <p><strong>Incluye</strong> →Teclado numérico</p>
+          <p><strong>Diseño</strong>  →Es estándar para oficina</p>
+          <p><strong>Facilita </strong> → cálculos, escritura y navegación</p>
+          <p><strong>Tipo de teclado</strong>→ Membrana (rubber dome)</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-celulares" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff;">CELULARES</h2>
+      <button onclick="volverAGaleriaDesdeCelulares()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px; justify-content: center;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/WpYt2qSt/celu1.png" alt="Samsung Galaxy S23" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">Samsung Galaxy S23</p>
+        </div>
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; max-width: 600px;">
+          <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
+<p>ㅤ</p>
+<p>ㅤ</p>
+
+            <li><strong>Tamaño:</strong> 6.1 pulgadas</li>
+            <li><strong>Tipo:</strong> Dynamic AMOLED 2X</li>
+            <li><strong>Resolución: </strong>Full HD+ (2340 x 1080)</li>
+            <li><strong>Frecuencia: </strong>48 - 120 Hz</li>
+            <li><strong>Chip:</strong> Snapdragon 8 Gen 2 for Galaxy</li>
+            <li><strong>CPU:</strong> Octa-core (hasta 3.36 GHz)</li>
+            <li><strong>GPU:</strong> Adreno 740</li>
+            <li><strong>RAM: </strong>8 GB</li>
+            <li><strong>Almacenamiento:</strong> 128 GB / 256 GB / 512 GB</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px; justify-content: center;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/Z6QLmVzW/celu2.png" alt="Xiaomi Poco X5" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">Xiaomi Poco X5</p>
+        </div>
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; max-width: 600px;">
+          <ul style="list-style-type: disc; padding-left: 20px; margin: 0;">
+<p>ㅤ</p>
+            <li><strong>Tamaño:</strong> 6.67 pulgadas</li>
+            <li><strong>Tipo:</strong> AMOLED</li>
+            <li><strong>Resolución:</strong>Full HD+ (2400 x 1080)</li>
+            <li><strong>Frecuencia: </strong>120 Hz</li>
+            <li><strong>Chip:</strong> Snapdragon 695</li>
+            <li><strong>Tecnología:</strong> De 6 nm</li>
+            <li><strong>Velocidad:</strong> Hasta 2.2 GHz</li>
+            <li><strong>RAM:</strong> 6 GB / 8 GB</li>
+            <li><strong>Almacenamiento:</strong> 128 GB / 256 GB</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="detalle-monitores" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff; font-family: sans-serif;">MONITORES</h2>
+      <button onclick="volverAGaleriaDesdeMonitores()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff; padding: 10px 20px; cursor: pointer;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/sdLGXwBZ/MONI1.png" alt="Monitor AOC" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px;">MONITOR AOC</p>
+        </div>
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.6;">
+          <p><strong>Tamaño de pantalla:</strong> Desde 23.8" hasta 34" (planos y curvos).</p>
+          <p><span style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">Resolución:</span></p>
+          <p><strong>Full HD:</strong> (1920x1080) | QHD (2560x1440)</p>
+          <p><strong>UltraWide:</strong> QHD (3440x1440) | 4K UHD (3840x2160)</p>
+          <p><span style="color: #00ffff;">Tipo de panel:</span> IPS, VA o WLED.</p>
+          <p><strong>Frecuencia de actualización:</strong> Entre 60 Hz y hasta 260 Hz en modelos gaming.</p>
+          <p><strong>Tiempo de respuesta:</strong> de 0.5 ms (MPRT) a 4 ms (GtG).</p>
+          <p><strong>Brillo:</strong>alrededor de 250-350 cd/m² según modelo.</p>
+        </div>
+      </div>
+
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/LzMFxRMS/MONI2.png" alt="Monitor Samsung 24" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px;">MONITOR SAMSUNG 24</p>
+        </div>
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.6;">
+    <p>ㅤ</p>      
+<p><span style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">Marca:</span> Samsung</p>
+          <p><strong>Línea:</strong> Essential Monitor (Serie S3)</p>
+          <p><strong>Tamaño:</strong> 24 pulgadas</p>
+          <p><strong>Tipo:</strong> Monitor plano (Flat)</p>
+          <p><strong>Uso:</strong> Oficina, estudio, multimedia y gaming básico</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-discos" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff; font-family: sans-serif;">DISCO DUROS</h2>
+      <button onclick="volverAGaleriaDesdeDiscos()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff; padding: 10px 20px; cursor: pointer;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/27qwdJNV/discoduro1-png.png" alt="Seagate Expansion 1TB" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">Seagate Expansion 1TB</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+<p>ㅤ</p>
+<p>ㅤ</p>
+<p>ㅤ</p>
+          <p><span style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">Tipo:</span> HDD externo</p>
+          <p><span style="color: #00ffff;">Capacidad:</span> 1 TB</p>
+          <p><span style="color: #00ffff;">Conectividad:</span> USB 3.0</p>
+          <p><span style="color: #00ffff;">Formato:</span> 2.5 pulgadas</p>
+          <p><strong>Uso:</strong>  almacenamiento portátil</p>
+          <p><strong>Compatibilidad:</strong>  Windows y Mac</p>
+          <p><strong>Velocidad:</strong> estándar (HDD)</p>
+        </div>
+      </div>
+
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/9kdL9CcD/discoduro2-png.png" alt="WD10EZEX" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">WD10EZEX</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+<p>ㅤ</p>
+<p>ㅤ</p>
+          <p style="margin: 0 0 5px 0;"><span style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">Marca:</span> Western Digital (WD Blue)</p>
+          <p style="margin: 0 0 5px 0;"><span style="color: #00ffff;">Tipo:</span> HDD interno</p>
+          <p style="margin: 0 0 5px 0;"><span style="color: #00ffff;">Capacidad:</span> 1 TB</p>
+          <p style="margin: 0 0 5px 0;"><span style="color: #00ffff;">Formato:</span> 3.5 pulgadas</p>
+          <p style="margin: 0 0 5px 0;"><span style="color: #00ffff;">Interfaz:</span> SATA III (6 Gb/s)</p>
+          <p style="margin: 0 0 5px 0;"><strong>Velocidad:</strong>  7200 RPM</p>
+          <p style="margin: 0 0 5px 0;"><strong>Caché: </strong> 64 MB</p>
+          <p style="margin: 0 0 5px 0;"><strong>Velocidad de transferencia: </strong> ~150 MB/s</p>
+          <p style="margin: 0 0 5px 0;"><strong>Uso:</strong>Para computadoras de escritorio</p>
+          <p style="margin: 0 0 5px 0;"><strong>Tecnología:</strong>  NoTouch (protege los datos)</p>
+          <p style="margin: 0 0 5px 0;"><strong>Consumo de energía:</strong>Bajo </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-cases" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff; font-family: sans-serif;">CASES</h2>
+      <button onclick="volverAGaleriaDesdeCases()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff; padding: 10px 20px; cursor: pointer;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/jknyqdD3/case1-png.png" alt="NZXT H510" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">NZXT H510</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+<p>ㅤ</p>
+<p>ㅤ</p>
+          <p><span style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">Tipo:</span> Case / Gabinete ATX</p>
+          <p><span style="color: #00ffff;">Formato:</span> Mid Tower</p>
+          <p><span style="color: #00ffff;">Compatibilidad:</span> ATX, Micro-ATX, Mini-ITX</p>
+          <p><span style="color: #00ffff;">Material:</span> Acero + vidrio templado</p>
+          <p><strong>Ventilación: </strong>Soporte para ventiladores y refrigeración líquida</p>
+          <p><strong>Puertos: </strong>USB, audio frontal</p>
+          <p><strong>Uso:</strong> PC gaming y oficina</p>
+        </div>
+      </div>
+
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/hJXhB157/case2.png" alt="Thermaltake S100" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">Thermaltake S100</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+<p>ㅤ</p>
+<p>ㅤ</p>
+          <p><span style="color: #00ffff; text-shadow: 0 0 5px #00ffff;">Tipo:</span> Case / Gabinete</p>
+          <p><span style="color: #00ffff;">Formato:</span> Micro-ATX</p>
+          <p><span style="color: #00ffff;">Compatibilidad:</span> Micro-ATX, Mini-ITX</p>
+          <p><span style="color: #00ffff;">Material:</span> Acero + vidrio templado</p>
+          <p><strong>Ventilación:</strong> 1 ventilador incluido (expandible)</p>
+          <p>strong>Puertos:</strong> USB y audio frontal</p>
+          <p><strong>Uso:</strong> Oficina, estudio, PC básica</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-ram" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff; font-family: sans-serif;">MEMORIAS RAM</h2>
+      <button onclick="volverAGaleriaDesdeRAM()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff; padding: 10px 20px; cursor: pointer;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/j9xv6mFt/memoria1-png.png" alt="Corsair Vengeance LPX" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">Crsr Vngeance LPX 8GB DDR4</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+          <p>ㅤ</p>
+<p>ㅤ</p>
+<p><strong>Tipo:</strong> Memoria RAM DDR4</p>
+          <p><strong>Capacidad:</strong>8 GB</p>
+          <p><strong>Velocidad:</strong>3200 MHz</p>
+          <p><strong>Formato:</strong>DIMM (PC de escritorio)</p>
+          <p><strong>Voltaje:</strong> 1.2V - 1.35V</p>
+          <p><strong>Uso:</strong> PC gaming y oficina</p>
+        </div>
+      </div>
+
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/v6FsGjfP/memoria2-png.png" alt="Fury Beast" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">Fury Beast 8GB DDR4</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+      <p>ㅤ</p>
+<p>ㅤ</p>    
+<p><strong>Tipo:</strong>Memoria RAM DDR4</p>
+          <p><strong>Capacidad:</strong>8 GB</p>
+          <p><strong>Velocidad:</strong>3200 MHz</p>
+          <p><strong>Formato:</strong>DIMM (PC de escritorio)</p>
+          <p><strong>Voltaje: </strong>1.35V</p>
+          <p><strong>Uso:</strong> PC gaming y oficina</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-fuentes" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff; font-family: sans-serif;">FUENTES DE PODER</h2>
+      <button onclick="volverAGaleriaDesdeFuentes()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff; padding: 10px 20px; cursor: pointer;"> ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; padding-bottom: 100px;">
+      
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/chFGj1Mg/fuente1-png.png" alt="EVGA 500 W1" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">EVGA 500 W1</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+      <p>ㅤ</p>
+<p>ㅤ</p>              
+<p><strong>Tipo:</strong>  Fuente de poder (PSU)</p>
+          <p><strong>Potencia:</strong> 500W</p>
+          <p><strong>Certificación:</strong> 80 Plus White</p>
+          <p><strong>Formato:</strong>  ATX</p>
+          <p><strong>Ventilador: </strong> 120 mm</p>
+          <p><strong>Uso: </strong> PC básica y oficina</p>
+
+        </div>
+      </div>
+
+      <div class="detalle-fila" style="display: flex; align-items: flex-start; gap: 40px;">
+        <div class="detalle-recuadro-imagen" style="width: 300px; min-width: 300px; border: 2px dashed #00ffff; padding: 20px; text-align: center; background: rgba(0,0,0,0.4); flex-shrink: 0;">
+          <img src="https://i.ibb.co/8gMmGBcd/fuente2.png" alt="Thermaltake" style="max-width: 100%; height: auto;">
+          <p style="color: white; margin-top: 15px; font-weight: bold;">Thermaltake</p>
+        </div>
+        
+        <div class="detalle-texto-especificaciones" style="flex: 1; color: #e0e0e0; font-family: sans-serif; line-height: 1.2;">
+            <p>ㅤ</p>
+<p>ㅤ</p>        
+<p><strong>Tipo:</strong>  Fuente de poder (PSU)</p>
+          <p><strong>Potencia:</strong> 500W</p>
+          <p><strong>Certificación:</strong> 80 Plus</p>
+          <p><strong>Formato:</strong> ATX</p>
+          <p><strong>Ventilador: </strong> 120 mm</p>
+          <p><strong>Uso:</strong> PC de oficina y gaming básico</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+  </section>
+
+
+<section id="servicios">
+  <h3 class="titulo-linea">SERVICIOS</h3>
+  <div class="imagen-contenedor">
+    <img class="img-servicios" src="https://i.ibb.co/Wv91bzj8/Servicio-Tecnico-para-PC-Redytec-removebg-preview.png" alt="Servicio Técnico para PC">
+  </div>
+  <div style="text-align:center;">
+    <button onclick="abrirServicios()" class="boton">Ver servicios</button>
+  </div>
+</section>
+
+<div id="interfaz-servicios" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2001; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 10px #00ffff;">SERVICIOS</h2>
+      <button onclick="cerrarServicios()" class="boton boton-atras" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; padding-bottom: 100px;">
+      
+      <div class="producto-card" onclick="mostrarDetalleMantenimiento()" style="border: 2px dashed #00ffff; padding: 15px;">
+        <img src="https://i.ibb.co/Gf2t4TBT/mantenimiento-S-png.png" alt="Mantenimiento Técnico" style="width: 100%; height: 250px; object-fit: cover;">
+        <p style="margin-top: 15px; font-size: 1.1em;">MANTENIMIENTO TÉCNICO</p>
+      </div>
+
+      <div class="producto-card"  onclick="mostrarDetalleInstalacion()" style="border: 2px dashed #00ffff; padding: 15px;">
+        <img src="https://i.ibb.co/dJp3CHWy/instalaci-n-S-png.png" alt="Instalación y Configuración" style="width: 100%; height: 250px; object-fit: cover;">
+        <p style="margin-top: 15px; font-size: 1.1em;">INSTALACIÓN Y CONFIGURACIÓN</p>
+      </div>
+
+      <div class="producto-card" onclick="mostrarDetalleReparacion()" style="border: 2px dashed #00ffff; padding: 15px;">
+        <img src="https://i.ibb.co/ppzM57t/reparacion-S.png" alt="Reparación de Hardware" style="width: 100%; height: 250px; object-fit: cover;">
+        <p style="margin-top: 15px; font-size: 1.1em;">REPARACIÓN DE HARDWARE</p>
+      </div>
+
+      <div class="producto-card" onclick="mostrarDetalleAsesoria()" style="border: 2px dashed #00ffff; padding: 15px;">
+        <img src="https://i.ibb.co/8nmgz3Zw/asesoria-S-png.png" alt="Asesoría Personalizada" style="width: 100%; height: 250px; object-fit: cover;">
+        <p style="margin-top: 15px; font-size: 1.1em;">ASESORÍA PERSONALIZADA</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-instalacion" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 15px #00ffff; font-family: sans-serif; text-transform: uppercase;">INSTALACIÓN Y CONFIGURACIÓN</h2>
+      <button onclick="volverDesdeInstalacion()" class="boton-atras-cyber" style="position: absolute; right: 0; border: 2px dashed #00ffff; border-radius: 15px; background: transparent; color: #00ffff; padding: 10px 25px; cursor: pointer; font-weight: bold; text-shadow: 0 0 5px #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 50px; justify-content: center; margin-top: 60px;">
+      
+      <div style="width: 400px; border: 2px dashed #00ffff; padding: 10px; background: rgba(0,0,0,0.5); flex-shrink: 0;">
+        <img src="https://i.ibb.co/dJp3CHWy/instalaci-n-S-png.png" alt="Soporte Técnico" style="width: 100%; height: auto; display: block;">
+      </div>
+      
+      <div style="color: white; font-family: sans-serif; font-size: 1.2em; line-height: 1.8;">
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+          <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 10px;">•</span> Instalación del sistema operativo (Windows, Linux, etc.)
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 10px;">•</span> Instalación de programas básicos (Office, navegadores, antivirus)
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 10px;">•</span> Configuración inicial (usuarios, idioma, fecha, red)
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 10px;">•</span> Instalación de drivers/controladores
+          </li>
+          <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 10px;">•</span> Configuración de internet y dispositivos (impresoras, periféricos)
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-reparacion" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 15px #00ffff; font-family: sans-serif; text-transform: uppercase;">REPARACIÓN DE HARDWARE</h2>
+      <button onclick="volverDesdeReparacion()" class="boton-atras-cyber" style="position: absolute; right: 0; border: 2px dashed #00ffff; border-radius: 15px; background: transparent; color: #00ffff; padding: 10px 25px; cursor: pointer; font-weight: bold; text-shadow: 0 0 5px #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 60px; justify-content: center; margin-top: 60px;">
+      
+      <div style="width: 450px; border: 2px dashed #00ffff; padding: 10px; background: rgba(0,0,0,0.5); flex-shrink: 0;">
+        <img src="https://i.ibb.co/ppzM57t/reparacion-S.png" alt="Reparación Hardware Detalle" style="width: 100%; height: auto; display: block;">
+      </div>
+      
+      <div style="color: white; font-family: sans-serif; font-size: 1.25em; line-height: 1.6;">
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Diagnóstico de fallas físicas
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Cambio de piezas (RAM, disco duro, fuente de poder, pantalla, teclado)
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Reparación de problemas de encendido
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Solución de sobrecalentamiento
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Mantenimiento de componentes internos
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-asesoria" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 15px #00ffff; font-family: sans-serif; text-transform: uppercase;">ASESORÍA PERSONALIZADA</h2>
+      <button onclick="volverDesdeAsesoria()" class="boton-atras-cyber" style="position: absolute; right: 0; border: 2px dashed #00ffff; border-radius: 15px; background: transparent; color: #00ffff; padding: 10px 25px; cursor: pointer; font-weight: bold; text-shadow: 0 0 5px #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 60px; justify-content: center; margin-top: 60px;">
+      
+      <div style="width: 450px; border: 2px dashed #00ffff; padding: 10px; background: rgba(0,0,0,0.5); flex-shrink: 0;">
+        <img src="https://i.ibb.co/8nmgz3Zw/asesoria-S-png.png" alt="Personal Asesorando" style="width: 100%; height: auto; display: block;">
+      </div>
+      
+      <div style="color: white; font-family: sans-serif; font-size: 1.25em; line-height: 1.7;">
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Recomendación de equipos o componentes
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Ayuda en el uso de programas y herramientas
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Solución de dudas técnicas
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Optimización según el tipo de uso (estudio, trabajo, gaming)
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> Capacitación básica al usuario
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div id="detalle-mantenimiento" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2005; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 1200px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 50px;">
+      <h2 style="font-size: 3em; color: #00ffff; margin: 0; text-shadow: 0 0 15px #00ffff; font-family: sans-serif; text-transform: uppercase;">MANTENIMIENTO TÉCNICO</h2>
+      <button onclick="volverDesdeMantenimiento()" class="boton-atras-cyber" style="position: absolute; right: 0; border: 2px dashed #00ffff; border-radius: 15px; background: transparent; color: #00ffff; padding: 10px 25px; cursor: pointer; font-weight: bold; text-shadow: 0 0 5px #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 60px; justify-content: center; margin-top: 60px;">
+      
+      <div style="width: 450px; border: 2px dashed #00ffff; padding: 10px; background: rgba(0,0,0,0.5); flex-shrink: 0;">
+        <img src="https://i.ibb.co/Gf2t4TBT/mantenimiento-S-png.png" alt="Técnico trabajando" style="width: 100%; height: auto; display: block;">
+      </div>
+      
+      <div style="color: white; font-family: sans-serif; font-size: 1.2em; line-height: 1.6;">
+        <ul style="list-style-type: none; padding: 0; margin: 0;">
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> <strong>Preventivo:</strong> limpieza, optimización y actualizaciones para evitar fallas.
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> <strong>Correctivo:</strong> reparación de daños, cambio de piezas y eliminación de virus.
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> <strong>Soporte técnico:</strong> diagnóstico, instalación de programas y asesoría.
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> <strong>Redes:</strong> configuración de internet y solución de conexión.
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> <strong>Instalación:</strong> preparación de sistemas operativos y programas.
+          </li>
+          <li style="margin-bottom: 12px; display: flex; align-items: flex-start;">
+            <span style="color: #00ffff; margin-right: 15px;">•</span> <strong>Seguridad:</strong> protección contra virus y respaldo de información.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section id="promociones">
+  <h3 class="titulo-linea">PROMOCIONES</h3>
+  <div class="imagen-contenedor">
+    <img src="https://i.ibb.co/JR6fW65W/descuentos-removebg-preview.png" alt="Promociones TECNOFIX" style="max-width: 60%; margin-bottom: 20px;">
+  </div>
+  <div style="text-align:center;">
+    <button onclick="abrirPromociones()" class="boton">Ver promociones</button>
+  </div>
+</section>
+
+<div id="interfaz-promociones" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: #0f0f0f url('https://i.ibb.co/fdQLBXr3/fondo.png') no-repeat center center fixed; background-size: cover; z-index: 2002; overflow-y: auto; padding: 40px 20px;">
+  
+  <div style="max-width: 900px; margin: auto; position: relative;">
+    
+    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
+      <h2 style="font-size: 2.5em; color: #00ffff; text-shadow: 0 0 15px #00ffff;">PROMOCIONES</h2>
+      <button onclick="cerrarPromociones()" class="boton" style="position: absolute; right: 0; border: 2px dashed #00ffff; background: transparent; color: #00ffff;">ATRAS</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 40px;">
+      
+      <div class="promo-fila">
+        <div class="promo-imagen"><img src="https://i.ibb.co/Hp1RdYdg/celu.png"></div>
+        <div class="promo-texto">
+          <h4>Júntate con tus panas y llévate el 25% de descuento en 3 celulares</h4>
+          <p>Compra en grupo y paga menos</p>
+        </div>
+      </div>
+
+      <div class="promo-fila">
+        <div class="promo-texto">
+          <h4>¡No los abandones! Repara 2 equipos y recibe 10% OFF</h4>
+          <p>Dale segunda vida a tus equipos</p>
+        </div>
+        <div class="promo-imagen"><img src="https://i.ibb.co/rRc6ZWTX/10.png"></div>
+      </div>
+
+      <div class="promo-fila">
+        <div class="promo-imagen"><img src="https://i.ibb.co/F4KkghYv/clientes.png"></div>
+        <div class="promo-texto">
+          <h4>Tú ya eres de casa 😎 llévate 5% OFF en todo</h4>
+          <p>Clientes fieles = precios especiales 🔥</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+  <!-- Sección Contacto -->
+  <section id="contacto">
+    <h3 class="titulo-linea">CONTACTO</h3>
+    <div class="contact-container">
+
+<!-- Correo electrónico con enlace directo -->
+<div class="contact-card">
+  <a href="mailto:tecnofix@gmail.com" style="text-decoration:none; color:#e0e0e0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Icono correo" class="icon">
+    <p>tecnofix@gmail.com</p>
+  </a>
+</div>
+
+
+<!-- Teléfono con enlace directo a WhatsApp -->
+<div class="contact-card">
+  <a href="https://wa.me/593992183389" target="_blank" style="text-decoration:none; color:#e0e0e0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" 
+         alt="Icono teléfono" class="icon">
+    <p>0992183389</p>
+  </a>
+</div>
+
+
+      <!-- Ubicación -->
+      <div class="contact-card">
+        <a href="https://maps.app.goo.gl/4Pcg4j6ACd4Lor8a8" target="_blank" style="text-decoration:none; color:#e0e0e0;">
+          <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Icono ubicación" class="icon">
+          <p>Ubicación</p>
+        </a>
+      </div>
+<!-- Pie de página fijo -->
+<footer style="position:fixed; bottom:0; left:0; width:100%; background:linear-gradient(90deg,#0a0a0a,#1f1f1f); border-top:2px solid #00ffff; display:flex; justify-content:center; align-items:center; gap:40px; padding:15px; z-index:1000;">
+
+  <!-- Correo -->
+  <div style="display:flex; align-items:center; gap:10px; color:#e0e0e0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Icono correo" style="width:30px; height:30px; filter:grayscale(100%);">
+    <span style="font-size:1.1em;">TECNOFIX</span>
+  </div>
+
+  <!-- Celular -->
+  <div style="display:flex; align-items:center; gap:10px; color:#e0e0e0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Icono teléfono" style="width:30px; height:30px; filter:grayscale(100%);">
+    <span style="font-size:1.1em;">099218338</span>
+  </div>
+
+  <!-- Ubicación -->
+  <div style="display:flex; align-items:center; gap:10px; color:#e0e0e0;">
+    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Icono ubicación" style="width:30px; height:30px; filter:grayscale(100%);">
+    <span style="font-size:1.1em;">Arosemena Tola</span>
+  </div>
+
+</footer>
+<script>
+  // --- LÓGICA DE PRODUCTOS ---
+  function abrirProductos() {
+    document.getElementById('interfaz-galeria').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+// Función principal: Abre la cuadrícula de productos (Nivel 1)
+  function abrirProductos() {
+    document.getElementById('interfaz-galeria').style.display = 'block';
+    // Ocultamos el detalle por si acaso quedó abierto
+    document.getElementById('detalle-impresoras').style.display = 'none'; 
+    document.body.style.overflow = 'hidden'; // Bloquea scroll del fondo
+  }
+
+  // Cierra todo y vuelve a la HOME
+  function cerrarGaleriaCompleta() {
+    document.getElementById('interfaz-galeria').style.display = 'none';
+    document.getElementById('detalle-impresoras').style.display = 'none';
+    document.body.style.overflow = 'auto'; // Devuelve el scroll
+    window.location.href = '#productos'; // Te deja en la sección de productos
+  }
+
+  // --- NAVEGACIÓN INTERNA (Entre Nivel 1 y Nivel 2) ---
+
+  // Muestra el detalle de impresoras (Nivel 2)
+  function mostrarDetalleImpresoras() {
+    // 1. Ocultamos la cuadrícula (Nivel 1)
+    document.getElementById('interfaz-galeria').style.display = 'none';
+    // 2. Mostramos el detalle (Nivel 2)
+    document.getElementById('detalle-impresoras').style.display = 'block';
+  }
+
+  // Vuelve del detalle (Nivel 2) a la cuadrícula (Nivel 1)
+  function volverAGaleriaProductos() {
+    // 1. Ocultamos el detalle (Nivel 2)
+    document.getElementById('detalle-impresoras').style.display = 'none';
+    // 2. Volvemos a mostrar la cuadrícula (Nivel 1)
+    document.getElementById('interfaz-galeria').style.display = 'block';
+  }
+
+  function cerrarProductos() {
+    document.getElementById('interfaz-galeria').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    window.location.href = '#productos'; // Te deja en la sección de productos
+  }
+// --- FUNCIONES PARA LA SECCIÓN DE TECLADOS ---
+
+function mostrarDetalleTeclados() {
+  // 1. Ocultamos la cuadrícula de productos (Nivel 1)
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  // 2. Mostramos la interfaz de detalles de teclados (Nivel 2)
+  document.getElementById('detalle-teclados').style.display = 'block';
+}
+
+function volverAGaleriaDesdeTeclados() {
+  // 1. Ocultamos el detalle de teclados
+  document.getElementById('detalle-teclados').style.display = 'none';
+  // 2. Volvemos a mostrar la cuadrícula de productos
+  document.getElementById('interfaz-galeria').style.display = 'block';
+}
+// --- FUNCIONES PARA CELULARES ---
+
+function mostrarDetalleCelulares() {
+  // Ocultamos la cuadrícula de productos (Nivel 1)
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  // Mostramos el detalle de celulares (Nivel 2)
+  document.getElementById('detalle-celulares').style.display = 'block';
+}
+
+function volverAGaleriaDesdeCelulares() {
+  // Ocultamos el detalle de celulares
+  document.getElementById('detalle-celulares').style.display = 'none';
+  // Volvemos a mostrar la cuadrícula de productos
+  document.getElementById('interfaz-galeria').style.display = 'block';
+}
+
+// Actualiza tu función de cierre total para que también limpie esta pantalla
+function cerrarGaleriaCompleta() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-impresoras').style.display = 'none';
+  document.getElementById('detalle-teclados').style.display = 'none';
+  document.getElementById('detalle-celulares').style.display = 'none'; // Nueva línea
+  document.body.style.overflow = 'auto';
+  window.location.href = '#productos';
+}
+
+// --- ACTUALIZACIÓN DE CIERRE TOTAL ---
+// Asegúrate de que tu función cerrarGaleriaCompleta también limpie esta pantalla
+function cerrarGaleriaCompleta() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-impresoras').style.display = 'none';
+  document.getElementById('detalle-teclados').style.display = 'none'; // Línea importante
+  document.body.style.overflow = 'auto'; // Devuelve el scroll a la página principal
+  window.location.href = '#productos'; // Te posiciona en la sección de productos
+}
+// --- FUNCIONES PARA MONITORES ---
+
+function mostrarDetalleMonitores() {
+  // Ocultamos la galería de productos
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  // Mostramos el detalle de monitores
+  document.getElementById('detalle-monitores').style.display = 'block';
+}
+
+function volverAGaleriaDesdeMonitores() {
+  // Ocultamos el detalle de monitores
+  document.getElementById('detalle-monitores').style.display = 'none';
+  // Volvemos a mostrar la galería
+  document.getElementById('interfaz-galeria').style.display = 'block';
+}
+
+// Recuerda actualizar cerrarGaleriaCompleta para incluir este ID
+function cerrarGaleriaCompleta() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-impresoras').style.display = 'none';
+  document.getElementById('detalle-teclados').style.display = 'none';
+  document.getElementById('detalle-celulares').style.display = 'none';
+  document.getElementById('detalle-monitores').style.display = 'none'; // Línea añadida
+  document.body.style.overflow = 'auto';
+  window.location.href = '#productos';
+}
+// --- FUNCIONES PARA DISCOS DUROS ---
+
+function mostrarDetalleDiscos() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-discos').style.display = 'block';
+}
+
+function volverAGaleriaDesdeDiscos() {
+  document.getElementById('detalle-discos').style.display = 'none';
+  document.getElementById('interfaz-galeria').style.display = 'block';
+}
+
+// No olvides actualizar cerrarGaleriaCompleta
+function cerrarGaleriaCompleta() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-impresoras').style.display = 'none';
+  document.getElementById('detalle-teclados').style.display = 'none';
+  document.getElementById('detalle-celulares').style.display = 'none';
+  document.getElementById('detalle-monitores').style.display = 'none';
+  document.getElementById('detalle-discos').style.display = 'none'; // Nueva línea
+  document.body.style.overflow = 'auto';
+  window.location.href = '#productos';
+}
+// --- FUNCIONES PARA CASES ---
+
+function mostrarDetalleCases() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-cases').style.display = 'block';
+}
+
+function volverAGaleriaDesdeCases() {
+  document.getElementById('detalle-cases').style.display = 'none';
+  document.getElementById('interfaz-galeria').style.display = 'block';
+}
+
+// Actualización necesaria en tu función de cierre
+function cerrarGaleriaCompleta() {
+  const secciones = [
+    'interfaz-galeria', 'detalle-impresoras', 'detalle-teclados', 
+    'detalle-celulares', 'detalle-monitores', 'detalle-discos', 
+    'detalle-cases' // Asegúrate de añadir esta
+  ];
+  
+  secciones.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+  
+  document.body.style.overflow = 'auto';
+  window.location.href = '#productos';
+}
+
+// --- FUNCIONES PARA MEMORIAS RAM ---
+
+function mostrarDetalleRAM() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-ram').style.display = 'block';
+}
+
+function volverAGaleriaDesdeRAM() {
+  document.getElementById('detalle-ram').style.display = 'none';
+  document.getElementById('interfaz-galeria').style.display = 'block';
+}
+
+// Actualiza tu función global de cierre para incluir esta sección
+function cerrarGaleriaCompleta() {
+  const ids = [
+    'interfaz-galeria', 'detalle-impresoras', 'detalle-teclados', 
+    'detalle-celulares', 'detalle-monitores', 'detalle-discos', 
+    'detalle-cases', 'detalle-ram' // ID de RAM añadido
+  ];
+  
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+  
+  document.body.style.overflow = 'auto';
+  window.location.href = '#productos';
+}
+// --- FUNCIONES PARA FUENTES DE PODER ---
+
+function mostrarDetalleFuentes() {
+  document.getElementById('interfaz-galeria').style.display = 'none';
+  document.getElementById('detalle-fuentes').style.display = 'block';
+}
+
+function volverAGaleriaDesdeFuentes() {
+  document.getElementById('detalle-fuentes').style.display = 'none';
+  document.getElementById('interfaz-galeria').style.display = 'block';
+}
+
+// Actualiza tu función de cierre total
+function cerrarGaleriaCompleta() {
+  const secciones = [
+    'interfaz-galeria', 'detalle-impresoras', 'detalle-teclados', 
+    'detalle-celulares', 'detalle-monitores', 'detalle-discos', 
+    'detalle-cases', 'detalle-ram', 'detalle-fuentes' // Nueva sección añadida
+  ];
+  
+  secciones.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+  
+  document.body.style.overflow = 'auto';
+  window.location.href = '#productos';
+}
+
+  // --- LÓGICA DE SERVICIOS ---
+  function abrirServicios() {
+    document.getElementById('interfaz-servicios').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarServicios() {
+    document.getElementById('interfaz-servicios').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    window.location.href = '#servicios'; // Te deja en la sección de servicios
+  }
+// Función para mostrar la sección de Instalación
+function mostrarDetalleInstalacion() {
+  // Ocultamos la página de servicios actual (ajusta el ID según tu código)
+  document.getElementById('interfaz-servicios').style.display = 'none'; 
+  // Mostramos la nueva sección
+  document.getElementById('detalle-instalacion').style.display = 'block';
+}
+
+// Función para volver a la galería de servicios
+function volverDesdeInstalacion() {
+  document.getElementById('detalle-instalacion').style.display = 'none';
+  document.getElementById('interfaz-servicios').style.display = 'block';
+}
+
+// Asegúrate de incluir 'detalle-instalacion' en tu función de cerrar todo
+function cerrarTodo() {
+  const secciones = ['detalle-instalacion', 'interfaz-servicios', 'interfaz-galeria'];
+  secciones.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+}
+function mostrarDetalleReparacion() {
+  document.getElementById('interfaz-servicios').style.display = 'none';
+  document.getElementById('detalle-reparacion').style.display = 'block';
+}
+
+function volverDesdeReparacion() {
+  document.getElementById('detalle-reparacion').style.display = 'none';
+  document.getElementById('interfaz-servicios').style.display = 'block';
+}
+
+// Recuerda añadir 'detalle-reparacion' a tu lista de cierre total si la tienes
+
+ function mostrarDetalleAsesoria() {
+  document.getElementById('interfaz-servicios').style.display = 'none';
+  document.getElementById('detalle-asesoria').style.display = 'block';
+}
+
+function volverDesdeAsesoria() {
+  document.getElementById('detalle-asesoria').style.display = 'none';
+  document.getElementById('interfaz-servicios').style.display = 'block';
+}
+
+// Actualiza tu función global de cierre si la usas
+function cerrarTodo() {
+  const ids = ['detalle-asesoria', 'detalle-reparacion', 'detalle-instalacion', 'interfaz-servicios'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+}
+function mostrarDetalleMantenimiento() {
+  // Oculta la galería de servicios y muestra el detalle
+  document.getElementById('interfaz-servicios').style.display = 'none';
+  document.getElementById('detalle-mantenimiento').style.display = 'block';
+}
+
+function volverDesdeMantenimiento() {
+  // Oculta el detalle y vuelve a la galería
+  document.getElementById('detalle-mantenimiento').style.display = 'none';
+  document.getElementById('interfaz-servicios').style.display = 'block';
+}
+
+ // --- LÓGICA DE PROMOCIONES ---
+  function abrirPromociones() {
+    document.getElementById('interfaz-promociones').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarPromociones() {
+    document.getElementById('interfaz-promociones').style.display = 'none';
+    document.body.style.overflow = 'auto';
+    window.location.href = '#promociones'; // Te deja en la sección de promociones
+  }
+</script>
+
+<script>
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loading-screen").style.display = "none";
+  }, 800);
+});
+</script>
+
+<script>
+function revealOnScroll() {
+  const elements = document.querySelectorAll(
+    "section, .producto-card, .detalle-fila, .contact-card, .promo-fila"
+  );
+
+  elements.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight * 0.85;
+
+    if (top < triggerPoint) {
+      el.classList.add("reveal", "active");
+    } else {
+      el.classList.add("reveal");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
+
+</body>
+</html>
